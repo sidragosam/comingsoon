@@ -90,9 +90,23 @@
         } else {
           setTimeout(() => {
             charIndex = 0;
+            deleteEffect();
+          }, 2000);
+        }
+      }
+
+      function deleteEffect() {
+        if (charIndex < message.length) {
+          currentMessage[message.length - 1 - charIndex] = "";
+          textElement.textContent = currentMessage.join("");
+          charIndex++;
+          setTimeout(deleteEffect, 100);
+        } else {
+          setTimeout(() => {
+            charIndex = 0;
             currentMessage = Array(message.length).fill("");
             typeEffect();
-          }, 2000);
+          }, 1000);
         }
       }
 
